@@ -1,0 +1,69 @@
+﻿<Window x:Class="AnimalManager.AddAnimalDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Lisa uus loom" Height="350" Width="400"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="#F5F5F5">
+
+    <Border Margin="20" Background="White" CornerRadius="10" Padding="20"
+            BorderBrush="#CCCCCC" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Pealkiri -->
+            <TextBlock Grid.Row="0" Text="🐾 Lisa uus loom" FontSize="20" 
+                      FontWeight="Bold" Foreground="#333333" Margin="0,0,0,20"/>
+
+            <!-- Looma tüüp -->
+            <StackPanel Grid.Row="1" Margin="0,0,0,15">
+                <TextBlock Text="Looma tüüp:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <ComboBox x:Name="AnimalTypeComboBox" Height="35" FontSize="14"
+                         SelectionChanged="AnimalTypeComboBox_SelectionChanged">
+                    <ComboBoxItem Content="🐱 Kass" Tag="Cat"/>
+                    <ComboBoxItem Content="🐶 Koer" Tag="Dog"/>
+                    <ComboBoxItem Content="🐦 Lind" Tag="Bird"/>
+                    <ComboBoxItem Content="🦝 Pesukaru" Tag="Raccoon"/>
+                    <ComboBoxItem Content="🐵 Ahv" Tag="Monkey"/>
+                </ComboBox>
+            </StackPanel>
+
+            <!-- Nimi -->
+            <StackPanel Grid.Row="2" Margin="0,0,0,15">
+                <TextBlock Text="Nimi:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="NameTextBox" Height="35" FontSize="14" 
+                        VerticalContentAlignment="Center" Padding="5"/>
+            </StackPanel>
+
+            <!-- Vanus -->
+            <StackPanel Grid.Row="3" Margin="0,0,0,15">
+                <TextBlock Text="Vanus (aastat):" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="AgeTextBox" Height="35" FontSize="14" 
+                        VerticalContentAlignment="Center" Padding="5"/>
+            </StackPanel>
+
+            <!-- Lisainfo (dünaamiline) -->
+            <StackPanel Grid.Row="4" x:Name="ExtraInfoPanel" Margin="0,0,0,15"/>
+
+            <!-- Nupud -->
+            <StackPanel Grid.Row="5" Orientation="Horizontal" 
+                       HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button Content="✅ Lisa" Click="Add_Click" 
+                       Width="100" Height="35" Margin="0,0,10,0"
+                       Background="#4CAF50" Foreground="White" 
+                       FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+
+                <Button Content="❌ Tühista" Click="Cancel_Click" 
+                       Width="100" Height="35"
+                       Background="#F44336" Foreground="White" 
+                       FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

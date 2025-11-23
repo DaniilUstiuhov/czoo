@@ -1,0 +1,162 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|c:\\users\\molot\\desktop\\c#\\.vs\\crazy zoo\\crazy zoo\\animalmanager\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\animalmanager\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\crazy zoo\\animalmanager\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\animalmanager\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\crazy zoo\\animalmanager\\animalmanager.csproj||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\animalmanager\\animalmanager.csproj||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\crazy zoo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\crazy zoo\\animalmanager\\views\\addanimaldialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\animalmanager\\views\\addanimaldialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\crazy zoo\\animalmanager\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\animalmanager\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\crazy zoo\\animalmanager\\models\\animal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\animalmanager\\models\\animal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\crazy zoo\\animalmanager\\views\\addanimaldialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\animalmanager\\views\\addanimaldialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\crazy zoo\\animalmanager\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A78045FD-8A24-4553-BF11-B2C0AFFE4841}|Crazy Zoo\\Crazy Zoo.csproj|solutionrelative:crazy zoo\\animalmanager\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\Program.cs",
+              "RelativeDocumentMoniker": "Crazy Zoo\\Program.cs",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\Program.cs",
+              "RelativeToolTip": "Crazy Zoo\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T22:18:50.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AnimalManager.csproj",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\AnimalManager.csproj",
+              "RelativeDocumentMoniker": "Crazy Zoo\\AnimalManager\\AnimalManager.csproj",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\AnimalManager.csproj",
+              "RelativeToolTip": "Crazy Zoo\\AnimalManager\\AnimalManager.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-19T21:59:05.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Crazy Zoo\\AnimalManager\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\App.xaml.cs",
+              "RelativeToolTip": "Crazy Zoo\\AnimalManager\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T21:58:53.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\App.xaml",
+              "RelativeDocumentMoniker": "Crazy Zoo\\AnimalManager\\App.xaml",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\App.xaml",
+              "RelativeToolTip": "Crazy Zoo\\AnimalManager\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-19T21:58:41.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAMAAAAAAAAAAAAA0wNQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T21:55:04.709Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddAnimalDialog.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml.cs",
+              "RelativeDocumentMoniker": "Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml.cs",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml.cs",
+              "RelativeToolTip": "Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T21:54:45.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-19T21:52:05.503Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AddAnimalDialog.xaml",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml",
+              "RelativeDocumentMoniker": "Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml",
+              "RelativeToolTip": "Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-19T21:51:31.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Animal.cs",
+              "DocumentMoniker": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Models\\Animal.cs",
+              "RelativeDocumentMoniker": "Crazy Zoo\\AnimalManager\\Models\\Animal.cs",
+              "ToolTip": "C:\\Users\\molot\\Desktop\\c#\\.vs\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Models\\Animal.cs",
+              "RelativeToolTip": "Crazy Zoo\\AnimalManager\\Models\\Animal.cs",
+              "ViewState": "AgIAALIAAAAAAAAAAADwv8oAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T21:50:58.795Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
