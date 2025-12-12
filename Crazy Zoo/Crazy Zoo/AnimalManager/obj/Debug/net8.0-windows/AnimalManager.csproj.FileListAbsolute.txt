@@ -1,0 +1,7 @@
+C:\Users\molot\Favorites\Desktop\czoo\czoo\Crazy Zoo\Crazy Zoo\AnimalManager\obj\Debug\net8.0-windows\AnimalManager.csproj.AssemblyReference.cache
+C:\Users\molot\Favorites\Desktop\czoo\czoo\Crazy Zoo\Crazy Zoo\AnimalManager\obj\Debug\net8.0-windows\Views\AddAnimalDialog.baml
+C:\Users\molot\Favorites\Desktop\czoo\czoo\Crazy Zoo\Crazy Zoo\AnimalManager\obj\Debug\net8.0-windows\Views\AddAnimalDialog.g.cs
+C:\Users\molot\Favorites\Desktop\czoo\czoo\Crazy Zoo\Crazy Zoo\AnimalManager\obj\Debug\net8.0-windows\Views\MainWindow.g.cs
+C:\Users\molot\Favorites\Desktop\czoo\czoo\Crazy Zoo\Crazy Zoo\AnimalManager\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\molot\Favorites\Desktop\czoo\czoo\Crazy Zoo\Crazy Zoo\AnimalManager\obj\Debug\net8.0-windows\AnimalManager_MarkupCompile.cache
+C:\Users\molot\Favorites\Desktop\czoo\czoo\Crazy Zoo\Crazy Zoo\AnimalManager\obj\Debug\net8.0-windows\AnimalManager_MarkupCompile.lref

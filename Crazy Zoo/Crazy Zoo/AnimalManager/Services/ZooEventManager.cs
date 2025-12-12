@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Timers;
+using System.Windows; // FIXED: Added for Dispatcher
 
 namespace AnimalManager.Services
 {
@@ -12,12 +13,14 @@ namespace AnimalManager.Services
     /// <summary>
     /// Менеджер событий зоопарка с таймером
     /// Каждые N секунд генерирует ночное событие
+    /// FIXED: Now uses Dispatcher for thread-safe UI updates
     /// </summary>
     public class ZooEventManager
     {
         private Timer _nightTimer;
         private bool _isNight = false;
         private int _dayCount = 0;
+        private readonly object _lockObject = new object(); // FIXED: Thread safety
 
         // События
         public event EventHandler<NightEventArgs> NightEvent;
@@ -51,25 +54,33 @@ namespace AnimalManager.Services
             }
         }
 
+        // FIXED: Now thread-safe with Dispatcher
         private void OnNightTimerElapsed(object sender, ElapsedEventArgs e)
         {
-            _isNight = !_isNight;
-
-            if (_isNight)
+            // Use Dispatcher to marshal to UI thread
+            Application.Current?.Dispatcher.Invoke(() =>
             {
-                _dayCount++;
-                var eventArgs = new NightEventArgs
+                lock (_lockObject) // Additional thread safety
                 {
-                    DayNumber = _dayCount,
-                    Message = GenerateNightEvent()
-                };
+                    _isNight = !_isNight;
 
-                OnNightEvent(eventArgs);
-            }
-            else
-            {
-                Log("☀️ Hommik on käes. Loomad ärkavad!");
-            }
+                    if (_isNight)
+                    {
+                        _dayCount++;
+                        var eventArgs = new NightEventArgs
+                        {
+                            DayNumber = _dayCount,
+                            Message = GenerateNightEvent()
+                        };
+
+                        OnNightEvent(eventArgs);
+                    }
+                    else
+                    {
+                        Log("☀️ Hommik on käes. Loomad ärkavad!");
+                    }
+                }
+            });
         }
 
         private string GenerateNightEvent()
@@ -103,6 +114,13 @@ namespace AnimalManager.Services
         {
             _nightTimer.Interval = seconds * 1000;
             Log($"⏱️ Intervall muudetud: {seconds} sekundit");
+        }
+
+        // Cleanup
+        public void Dispose()
+        {
+            _nightTimer?.Stop();
+            _nightTimer?.Dispose();
         }
     }
 }

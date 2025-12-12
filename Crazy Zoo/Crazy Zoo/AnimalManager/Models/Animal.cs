@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace AnimalManager
 {
@@ -16,13 +15,14 @@ namespace AnimalManager
         public string EnclosureName { get; set; }
     }
 
-    // ============= БАЗОВЫЙ КЛАСС (БЕЗ ИЗМЕНЕНИЙ) =============
+    // ============= БАЗОВЫЙ КЛАСС (С ДОБАВЛЕНИЕМ ID) =============
     public abstract class Animal
     {
+        public int Id { get; set; }  // NEW: ID для базы данных
         public string Name { get; set; }
         public int Age { get; set; }
-        public string EnclosureId { get; set; }  // NEW: для вольеров
-        public double EatingSpeed { get; set; }  // NEW: скорость поедания (секунды)
+        public string EnclosureId { get; set; }
+        public double EatingSpeed { get; set; }
 
         protected Animal(string name, int age, double eatingSpeed = 2.0)
         {

@@ -63,18 +63,40 @@ namespace AnimalManager
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            // Valideerime sisendid
+            // IMPROVED: Enhanced validation
+
+            // Validate name
             if (string.IsNullOrWhiteSpace(NameTextBox.Text))
             {
                 MessageBox.Show("Palun sisesta nimi!", "Viga",
                               MessageBoxButton.OK, MessageBoxImage.Error);
+                NameTextBox.Focus();
                 return;
             }
 
+            // FIXED: Validate name length
+            if (NameTextBox.Text.Trim().Length < 2)
+            {
+                MessageBox.Show("Nimi peab olema vähemalt 2 tähemärki pikk!", "Viga",
+                              MessageBoxButton.OK, MessageBoxImage.Error);
+                NameTextBox.Focus();
+                return;
+            }
+
+            if (NameTextBox.Text.Trim().Length > 50)
+            {
+                MessageBox.Show("Nimi ei tohi olla pikem kui 50 tähemärki!", "Viga",
+                              MessageBoxButton.OK, MessageBoxImage.Error);
+                NameTextBox.Focus();
+                return;
+            }
+
+            // Validate age
             if (!int.TryParse(AgeTextBox.Text, out int age) || age < 0 || age > 100)
             {
                 MessageBox.Show("Palun sisesta korrektne vanus (0-100)!", "Viga",
                               MessageBoxButton.OK, MessageBoxImage.Error);
+                AgeTextBox.Focus();
                 return;
             }
 
@@ -84,6 +106,26 @@ namespace AnimalManager
                 string name = NameTextBox.Text.Trim();
                 string tag = selectedItem.Tag.ToString();
                 string extraInfo = extraTextBox?.Text.Trim() ?? "";
+
+                // FIXED: Validate extra info when required
+                if (!string.IsNullOrEmpty(extraInfo))
+                {
+                    if (extraInfo.Length < 2)
+                    {
+                        MessageBox.Show("Lisakirje peab olema vähemalt 2 tähemärki pikk!", "Viga",
+                                      MessageBoxButton.OK, MessageBoxImage.Error);
+                        extraTextBox?.Focus();
+                        return;
+                    }
+
+                    if (extraInfo.Length > 100)
+                    {
+                        MessageBox.Show("Lisakirje ei tohi olla pikem kui 100 tähemärki!", "Viga",
+                                      MessageBoxButton.OK, MessageBoxImage.Error);
+                        extraTextBox?.Focus();
+                        return;
+                    }
+                }
 
                 switch (tag)
                 {

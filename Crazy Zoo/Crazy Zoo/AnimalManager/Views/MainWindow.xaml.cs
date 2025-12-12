@@ -1,51 +1,66 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using AnimalManager.Interfaces;
 using AnimalManager.Repositories;
 using AnimalManager.Services;
+using AnimalManager.Resources;
+using Microsoft.Win32;
 
 namespace AnimalManager
 {
     public partial class MainWindow : Window
     {
-        // НОВОЕ: Repository вместо просто коллекции
+        // Dependency Injection
+        private readonly ILogger _logger;
+        private readonly IAnimalRepository _dbRepository;
+        private readonly ZooEventManager _eventManager;
+
+        // In-memory repository for UI
         private readonly IRepository<Animal> _animalRepository;
 
         private ObservableCollection<Animal> animals;
         private ObservableCollection<string> logEntries;
-        private ObservableCollection<string> statistics;  // НОВОЕ: LINQ статистика
-
-        // НОВОЕ: Вольеры (Enclosures)
+        private ObservableCollection<string> statistics;
         private ObservableCollection<Enclosure<Animal>> enclosures;
 
-        // НОВОЕ: Таймер событий
-        private readonly ZooEventManager _eventManager;
+        // Localization
+        private readonly Localization _loc = Localization.Instance;
 
-        public MainWindow()
+        public MainWindow(ILogger logger, IAnimalRepository dbRepository, ZooEventManager eventManager)
         {
             InitializeComponent();
 
-            // Инициализация Repository
+            // Store injected dependencies
+            _logger = logger;
+            _dbRepository = dbRepository;
+            _eventManager = eventManager;
+
+            // Initialize in-memory repository
             _animalRepository = new InMemoryRepository<Animal>();
 
+            // Initialize collections
             animals = new ObservableCollection<Animal>();
             logEntries = new ObservableCollection<string>();
             statistics = new ObservableCollection<string>();
             enclosures = new ObservableCollection<Enclosure<Animal>>();
 
-            // Таймер (каждые 10 секунд)
-            _eventManager = new ZooEventManager(10);
+            // Setup event manager
             _eventManager.LogMessage += (s, msg) => AddToLog(msg);
             _eventManager.NightEvent += (s, e) => AddToLog($"🌙 {e.Message}");
 
-            // Привязка к UI
+            // Bind to UI
             AnimalsListBox.ItemsSource = animals;
             LogListBox.ItemsSource = logEntries;
             StatisticsListBox.ItemsSource = statistics;
             EnclosuresListBox.ItemsSource = enclosures;
+
+            // Setup localization binding
+            DataContext = _loc;
+            this.Title = _loc["WindowTitle"];
 
             SetupKeyboardShortcuts();
             InitializeData();
@@ -53,12 +68,12 @@ namespace AnimalManager
 
         private void InitializeData()
         {
-            // Создаём вольеры
+            // Create enclosures
             var enclosure1 = new Enclosure<Animal>("Voljeer A", 5);
             var enclosure2 = new Enclosure<Animal>("Voljeer B", 5);
             var enclosure3 = new Enclosure<Animal>("Voljeer C", 3);
 
-            // Подписываемся на события вольеров
+            // Subscribe to enclosure events
             enclosure1.AnimalJoinedInSameEnclosure += OnAnimalJoinedEnclosure;
             enclosure1.FoodDropped += OnFoodDroppedInEnclosure;
             enclosure2.AnimalJoinedInSameEnclosure += OnAnimalJoinedEnclosure;
@@ -70,7 +85,7 @@ namespace AnimalManager
             enclosures.Add(enclosure2);
             enclosures.Add(enclosure3);
 
-            // Создаём животных
+            // Create animals
             var animalsList = new Animal[]
             {
                 new Cat("Muri", 3, "juustu"),
@@ -82,22 +97,22 @@ namespace AnimalManager
                 new Dog("Bobik", 3, "Koerapoeg")
             };
 
-            // Добавляем в Repository и UI
+            // Add to repository and UI
             foreach (var animal in animalsList)
             {
                 _animalRepository.Add(animal);
                 animals.Add(animal);
             }
 
-            // Распределяем по вольерам
+            // Distribute to enclosures
             enclosure1.AddAnimal(animalsList[0]);
             enclosure1.AddAnimal(animalsList[1]);
             enclosure2.AddAnimal(animalsList[2]);
             enclosure2.AddAnimal(animalsList[3]);
             enclosure3.AddAnimal(animalsList[4]);
 
-            AddToLog("🎉 Tere tulemast loomade haldamise süsteemi!");
-            AddToLog($"📊 Laaditud {animals.Count} looma ja {enclosures.Count} voljeerid.");
+            AddToLog(_loc["Welcome"]);
+            AddToLog(string.Format(_loc["AnimalsLoaded"], animals.Count, enclosures.Count));
 
             UpdateStatistics();
         }
@@ -107,9 +122,9 @@ namespace AnimalManager
         private void OnAnimalJoinedEnclosure(object sender, AnimalEventArgs e)
         {
             var enclosure = sender as Enclosure<Animal>;
-            AddToLog($"➕ {e.Animal.Name} liitus voljeeri {e.EnclosureName}!");
+            AddToLog(string.Format(_loc["AnimalJoined"], e.Animal.Name, e.EnclosureName));
 
-            // Все соседи реагируют
+            // All neighbors react
             foreach (var animal in enclosure.Animals.Where(a => a != e.Animal))
             {
                 AddToLog($"  💬 {animal.ReactToNewNeighbor(e.Animal)}");
@@ -119,23 +134,23 @@ namespace AnimalManager
         private async void OnFoodDroppedInEnclosure(object sender, FoodEventArgs e)
         {
             var enclosure = sender as Enclosure<Animal>;
-            AddToLog($"🍖 Toit ({e.FoodType}) visati voljeeri {e.EnclosureName}!");
+            AddToLog(string.Format(_loc["FoodDropped"], e.FoodType, e.EnclosureName));
 
-            // Животные едят ПОСЛЕДОВАТЕЛЬНО с разной скоростью
+            // Animals eat SEQUENTIALLY with different speeds
             foreach (var animal in enclosure.Animals)
             {
-                AddToLog($"  🍽️ {animal.ReactToFood(e.FoodType)}");
+                AddToLog(string.Format(_loc["EatingStarted"], animal.ReactToFood(e.FoodType)));
 
-                // Ждём пока съест (EatingSpeed секунд)
+                // Wait while eating (EatingSpeed seconds)
                 await Task.Delay((int)(animal.EatingSpeed * 1000));
 
-                AddToLog($"  ✅ {animal.Name} lõpetas söömise!");
+                AddToLog(string.Format(_loc["EatingFinished"], animal.Name));
             }
 
-            AddToLog($"🏁 Kõik loomad voljeeri {e.EnclosureName} sõid!");
+            AddToLog(string.Format(_loc["AllEaten"], e.EnclosureName));
         }
 
-        // ========== СУЩЕСТВУЮЩИЕ МЕТОДЫ (улучшенные) ==========
+        // ========== EXISTING METHODS ==========
 
         private void SetupKeyboardShortcuts()
         {
@@ -157,11 +172,11 @@ namespace AnimalManager
             if (AnimalsListBox.SelectedItem is Animal selectedAnimal)
             {
                 DetailsTextBlock.Text = selectedAnimal.Describe();
-                AddToLog($"✅ Valitud: {selectedAnimal.Name}");
+                AddToLog(string.Format(_loc["AnimalSelected"], selectedAnimal.Name));
             }
             else
             {
-                DetailsTextBlock.Text = "Vali loom vasakult...";
+                DetailsTextBlock.Text = _loc["SelectAnimal"];
             }
         }
 
@@ -170,11 +185,12 @@ namespace AnimalManager
             if (AnimalsListBox.SelectedItem is Animal selectedAnimal)
             {
                 string sound = selectedAnimal.MakeSound();
-                AddToLog($"🔊 {selectedAnimal.Name} ütles: {sound}");
+                AddToLog(string.Format(_loc["SoundMade"], selectedAnimal.Name, sound));
             }
             else
             {
-                MessageBox.Show("Palun vali loom!", "Hoiatus", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(_loc["PleaseSelectAnimal"], _loc["Warning"],
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -186,16 +202,18 @@ namespace AnimalManager
 
                 if (string.IsNullOrEmpty(food))
                 {
-                    MessageBox.Show("Sisesta toit!", "Hoiatus", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(_loc["EnterFood"], _loc["Warning"],
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                AddToLog($"🍖 {selectedAnimal.Name} sõi {food}. Nom nom nom!");
+                AddToLog(string.Format(_loc["AnimalFed"], selectedAnimal.Name, food));
                 FoodTextBox.Clear();
             }
             else
             {
-                MessageBox.Show("Palun vali loom!", "Hoiatus", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(_loc["PleaseSelectAnimal"], _loc["Warning"],
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -216,7 +234,8 @@ namespace AnimalManager
             }
             else
             {
-                MessageBox.Show("Palun vali loom!", "Hoiatus", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(_loc["PleaseSelectAnimal"], _loc["Warning"],
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -234,13 +253,12 @@ namespace AnimalManager
                 else
                 {
                     AddToLog($"❌ {selectedAnimal.Name} ei oska lennata!");
-                    MessageBox.Show($"{selectedAnimal.Name} ei saa lennata!",
-                                  "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Palun vali loom!", "Hoiatus", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(_loc["PleaseSelectAnimal"], _loc["Warning"],
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -250,10 +268,10 @@ namespace AnimalManager
             if (dialog.ShowDialog() == true)
             {
                 Animal newAnimal = dialog.CreatedAnimal;
-                _animalRepository.Add(newAnimal);  // НОВОЕ: в Repository
+                _animalRepository.Add(newAnimal);
                 animals.Add(newAnimal);
-                AddToLog($"➕ Lisatud uus loom: {newAnimal.Name} ({newAnimal.GetType().Name})");
-                UpdateStatistics();  // НОВОЕ
+                AddToLog(string.Format(_loc["AnimalAdded"], newAnimal.Name, newAnimal.GetType().Name));
+                UpdateStatistics();
             }
         }
 
@@ -262,29 +280,40 @@ namespace AnimalManager
             if (AnimalsListBox.SelectedItem is Animal selectedAnimal)
             {
                 var result = MessageBox.Show(
-                    $"Kas oled kindel, et soovid eemaldada {selectedAnimal.Name}?",
-                    "Kinnitus",
+                    _loc["ConfirmRemove"],
+                    _loc["Warning"],
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question
                 );
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    _animalRepository.Remove(selectedAnimal);  // НОВОЕ
+                    // FIXED: Remove from enclosure first
+                    var enclosure = enclosures.FirstOrDefault(enc => enc.Animals.Contains(selectedAnimal));
+                    if (enclosure != null)
+                    {
+                        enclosure.RemoveAnimal(selectedAnimal);
+                        AddToLog($"🏠 {selectedAnimal.Name} eemaldatud voljeerist {enclosure.Name}");
+                    }
+
+                    // Then remove from repositories
+                    _animalRepository.Remove(selectedAnimal);
                     animals.Remove(selectedAnimal);
-                    AddToLog($"❌ Eemaldatud: {selectedAnimal.Name}");
-                    DetailsTextBlock.Text = "Vali loom vasakult...";
-                    UpdateStatistics();  // НОВОЕ
+
+                    AddToLog(string.Format(_loc["AnimalRemoved"], selectedAnimal.Name));
+                    DetailsTextBlock.Text = _loc["SelectAnimal"];
+                    UpdateStatistics();
                 }
             }
             else
             {
-                MessageBox.Show("Palun vali loom eemaldamiseks!", "Hoiatus",
-                              MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(_loc["PleaseSelectAnimal"], _loc["Warning"],
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
-        // ========== НОВЫЕ МЕТОДЫ ==========
+
+        // ========== NEW METHODS ==========
 
         private void DropFood_Click(object sender, RoutedEventArgs e)
         {
@@ -299,7 +328,8 @@ namespace AnimalManager
             }
             else
             {
-                MessageBox.Show("Vali voljeer!", "Hoiatus", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(_loc["SelectEnclosure"], _loc["Warning"],
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -322,7 +352,7 @@ namespace AnimalManager
         {
             statistics.Clear();
 
-            // LINQ 1: GroupBy - группировка по типу
+            // LINQ 1: GroupBy - grouping by type
             var byType = _animalRepository.GetAll()
                 .GroupBy(a => a.GetType().Name)
                 .Select(g => new
@@ -332,66 +362,221 @@ namespace AnimalManager
                     AvgAge = g.Average(a => a.Age)
                 });
 
-            statistics.Add("📊 STATISTIKA TÜÜBI JÄRGI (GroupBy):");
+            statistics.Add(_loc["StatsByType"]);
             foreach (var group in byType)
             {
                 statistics.Add($"  {group.Type}: {group.Count} tk (keskmine vanus: {group.AvgAge:F1})");
             }
 
-            // LINQ 2: OrderBy + Take - самые старые
+            // LINQ 2: OrderBy + Take - oldest animals
             var oldest = _animalRepository.GetAll()
                 .OrderByDescending(a => a.Age)
                 .Take(3);
 
-            statistics.Add("\n👴 VANIMAD LOOMAD (OrderBy + Take):");
+            statistics.Add("\n" + _loc["OldestAnimals"]);
             foreach (var animal in oldest)
             {
-                statistics.Add($"  {animal.Name} - {animal.Age} aastat");
+                statistics.Add($"  {animal.Name} - {string.Format(_loc["YearsOld"], animal.Age)}");
             }
 
-            // LINQ 3: Where + Count - животные в вольерах
+            // LINQ 3: Where + Count - animals in enclosures
             var inEnclosures = _animalRepository.GetAll()
                 .Where(a => !string.IsNullOrEmpty(a.EnclosureId))
                 .GroupBy(a => a.EnclosureId);
 
-            statistics.Add("\n🏠 LOOMAD VOLJEERIDES (Where + GroupBy):");
+            statistics.Add("\n" + _loc["AnimalsInEnclosures"]);
             foreach (var enc in inEnclosures)
             {
                 statistics.Add($"  {enc.Key}: {enc.Count()} looma");
             }
 
-            // LINQ 4: Aggregate функции
+            // LINQ 4: Aggregate functions
             var total = _animalRepository.GetAll().Count();
             var avgAge = _animalRepository.GetAll().Average(a => a.Age);
             var withCrazy = _animalRepository.GetAll().Count(a => a is ICrazyAction);
             var canFly = _animalRepository.GetAll().Count(a => a is IFlyable);
 
-            statistics.Add($"\n📈 ÜLDSTATISTIKA (Count, Average):");
-            statistics.Add($"  Kokku loomi: {total}");
-            statistics.Add($"  Keskmine vanus: {avgAge:F1} aastat");
-            statistics.Add($"  Crazy Action-ga: {withCrazy}");
-            statistics.Add($"  Lendavad: {canFly}");
+            statistics.Add("\n" + _loc["GeneralStats"]);
+            statistics.Add(string.Format(_loc["TotalAnimals"], total));
+            statistics.Add(string.Format(_loc["AverageAge"], avgAge));
+            statistics.Add(string.Format(_loc["WithCrazy"], withCrazy));
+            statistics.Add(string.Format(_loc["CanFly"], canFly));
         }
 
         private void ClearLog_Click(object sender, RoutedEventArgs e)
         {
             logEntries.Clear();
-            AddToLog("🗑️ Logi tühjendatud.");
+            _logger.Clear();
+            AddToLog(_loc["LogCleared"]);
         }
 
         private void AddToLog(string message)
         {
             string timestamp = DateTime.Now.ToString("HH:mm:ss");
-            logEntries.Add($"[{timestamp}] {message}");
+            string fullMessage = $"[{timestamp}] {message}";
+            logEntries.Add(fullMessage);
+            _logger.Log(message);
 
             if (LogListBox.Items.Count > 0)
             {
                 LogListBox.ScrollIntoView(LogListBox.Items[LogListBox.Items.Count - 1]);
             }
         }
+
+        // ========== LOGGER OPERATIONS ==========
+
+        private void SaveLogs_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dialog = new SaveFileDialog
+                {
+                    Filter = "XML Files (*.xml)|*.xml|JSON Files (*.json)|*.json",
+                    DefaultExt = _logger is XmlLogger ? "xml" : "json",
+                    FileName = $"AnimalLog_{DateTime.Now:yyyyMMdd_HHmmss}"
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    _logger.SaveToFile(dialog.FileName);
+                    AddToLog(string.Format(_loc["LogsSaved"], dialog.FileName));
+                    MessageBox.Show(_loc["Success"], _loc["Success"],
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{_loc["Error"]}: {ex.Message}", _loc["Error"],
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LoadLogs_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dialog = new OpenFileDialog
+                {
+                    Filter = "XML Files (*.xml)|*.xml|JSON Files (*.json)|*.json",
+                    DefaultExt = _logger is XmlLogger ? "xml" : "json"
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    _logger.LoadFromFile(dialog.FileName);
+
+                    logEntries.Clear();
+                    foreach (var log in _logger.GetLogs())
+                    {
+                        logEntries.Add(log);
+                    }
+
+                    AddToLog(string.Format(_loc["LogsLoaded"], dialog.FileName));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{_loc["Error"]}: {ex.Message}", _loc["Error"],
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // ========== DATABASE OPERATIONS ==========
+
+        private void SaveToDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Clear existing data
+                _dbRepository.ClearAll();
+
+                // Save enclosures
+                foreach (var enclosure in enclosures)
+                {
+                    _dbRepository.AddEnclosure(enclosure.Name, enclosure.Capacity);
+                }
+
+                // Save animals
+                foreach (var animal in animals)
+                {
+                    _dbRepository.AddAnimal(animal);
+                }
+
+                AddToLog(_loc["DataSaved"]);
+                MessageBox.Show(_loc["Success"], _loc["Success"],
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{_loc["Error"]}: {ex.Message}", _loc["Error"],
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LoadFromDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Clear current data
+                animals.Clear();
+
+                // FIXED: Create a list copy before iteration
+                var animalsToRemove = _animalRepository.GetAll().ToList();
+                foreach (var animal in animalsToRemove)
+                {
+                    _animalRepository.Remove(animal);
+                }
+
+                // Load animals from database
+                var dbAnimals = _dbRepository.GetAllAnimals();
+                foreach (var animal in dbAnimals)
+                {
+                    _animalRepository.Add(animal);
+                    animals.Add(animal);
+                }
+
+                // Update enclosures with loaded animals
+                foreach (var enclosure in enclosures)
+                {
+                    var animalsInEnclosure = animals.Where(a => a.EnclosureId == enclosure.Name).ToList();
+                    foreach (var animal in animalsInEnclosure)
+                    {
+                        enclosure.AddAnimal(animal);
+                    }
+                }
+
+                AddToLog(_loc["DataLoaded"]);
+                UpdateStatistics();
+                MessageBox.Show(_loc["Success"], _loc["Success"],
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{_loc["Error"]}: {ex.Message}", _loc["Error"],
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // ========== LOCALIZATION ==========
+
+        private void SwitchLanguage_Click(object sender, RoutedEventArgs e)
+        {
+            _loc.SwitchLanguage();
+
+            // Update window title
+            this.Title = _loc["WindowTitle"];
+
+            // Update details text if nothing is selected
+            if (AnimalsListBox.SelectedItem == null)
+            {
+                DetailsTextBlock.Text = _loc["SelectAnimal"];
+            }
+
+            AddToLog($"🌐 Language switched to: {_loc.CurrentLanguage}");
+        }
     }
 
-    // Helper для keyboard shortcuts
+    // Helper for keyboard shortcuts
     public class RelayCommand : ICommand
     {
         private readonly Action<object> execute;

@@ -1,170 +1,265 @@
-﻿<Window x:Class="AnimalManager.MainWindow"
+<Window x:Class="AnimalManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Loomade Haldamise Süsteem - MVVM Edition" Height="700" Width="1100"
+        xmlns:res="clr-namespace:AnimalManager.Resources"
+        Title="Loomade Haldamise Süsteem"
+        Height="750" Width="1200"
         Background="#F5F5F5">
 
     <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="280"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <!-- VASAK PANEEL - Loomad ja Voljeerid -->
-        <Grid Grid.Column="0" Margin="0,0,10,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <!-- TOP TOOLBAR - С ВИДИМОЙ КНОПКОЙ ЛОКАЛИЗАЦИИ -->
+        <Border Grid.Row="0" Background="White" CornerRadius="8" Padding="10" 
+                BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <!-- НОВАЯ КНОПКА ЛОКАЛИЗАЦИИ - Первая и яркая -->
+                <Button Content="🌐 ET/RU/EN" 
+                       Click="SwitchLanguage_Click"
+                       Width="120" Height="35" Margin="0,0,10,0"
+                       Background="#FF5722" Foreground="White" 
+                       FontWeight="Bold" BorderThickness="0" Cursor="Hand"
+                       ToolTip="Vaheta keelt / Сменить язык / Switch Language"/>
+                
+                <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[SaveLogs]}" 
+                       Click="SaveLogs_Click"
+                       Width="150" Height="35" Margin="0,0,5,0"
+                       Background="#4CAF50" Foreground="White" 
+                       FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
 
-            <!-- Loomade nimekiri -->
-            <Border Grid.Row="0" Background="White" CornerRadius="8" Padding="10" 
-                    BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[LoadLogs]}" 
+                       Click="LoadLogs_Click"
+                       Width="150" Height="35" Margin="0,0,5,0"
+                       Background="#2196F3" Foreground="White" 
+                       FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
 
-                    <TextBlock Grid.Row="0" Text="🐾 Loomad" FontSize="18" 
-                              FontWeight="Bold" Margin="0,0,0,10" Foreground="#333333"/>
+                <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[SaveToDb]}" 
+                       Click="SaveToDatabase_Click"
+                       Width="150" Height="35" Margin="0,0,5,0"
+                       Background="#FF9800" Foreground="White" 
+                       FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
 
-                    <ListBox Grid.Row="1" x:Name="AnimalsListBox" 
-                            SelectionChanged="AnimalsListBox_SelectionChanged"
-                            FontSize="14" BorderThickness="1" BorderBrush="#DDDDDD">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}" Padding="5"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[LoadFromDb]}" 
+                       Click="LoadFromDatabase_Click"
+                       Width="150" Height="35" Margin="0,0,0,0"
+                       Background="#9C27B0" Foreground="White" 
+                       FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+            </StackPanel>
+        </Border>
 
-                    <StackPanel Grid.Row="2" Margin="0,10,0,0">
-                        <Button Content="➕ Lisa loom" Click="AddAnimal_Click" 
-                               Background="#4CAF50" Foreground="White" 
-                               Height="35" FontSize="14" FontWeight="Bold" 
-                               Margin="0,0,0,5" BorderThickness="0" Cursor="Hand"/>
+        <!-- MAIN CONTENT -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="280"/>
+            </Grid.ColumnDefinitions>
 
-                        <Button Content="❌ Eemalda loom" Click="RemoveAnimal_Click" 
-                               Background="#F44336" Foreground="White" 
-                               Height="35" FontSize="14" FontWeight="Bold" 
-                               BorderThickness="0" Cursor="Hand"/>
+            <!-- LEFT PANEL - Animals and Enclosures -->
+            <Grid Grid.Column="0" Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Animals List -->
+                <Border Grid.Row="0" Background="White" CornerRadius="8" Padding="10" 
+                        BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" 
+                                  Text="{Binding Source={x:Static res:Localization.Instance}, Path=[AnimalsSection]}" 
+                                  FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Foreground="#333333"/>
+
+                        <ListBox Grid.Row="1" x:Name="AnimalsListBox" 
+                                SelectionChanged="AnimalsListBox_SelectionChanged"
+                                FontSize="14" BorderThickness="1" BorderBrush="#DDDDDD">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Padding="5"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <StackPanel Grid.Row="2" Margin="0,10,0,0">
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[AddAnimal]}" 
+                                   Click="AddAnimal_Click" 
+                                   Background="#4CAF50" Foreground="White" 
+                                   Height="35" FontSize="14" FontWeight="Bold" 
+                                   Margin="0,0,0,5" BorderThickness="0" Cursor="Hand"/>
+
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[RemoveAnimal]}" 
+                                   Click="RemoveAnimal_Click" 
+                                   Background="#F44336" Foreground="White" 
+                                   Height="35" FontSize="14" FontWeight="Bold" 
+                                   BorderThickness="0" Cursor="Hand"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Enclosures List -->
+                <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="10" 
+                        BorderBrush="#CCCCCC" BorderThickness="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" 
+                                  Text="{Binding Source={x:Static res:Localization.Instance}, Path=[EnclosuresSection]}" 
+                                  FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Foreground="#333333"/>
+
+                        <ListBox Grid.Row="1" x:Name="EnclosuresListBox"
+                                FontSize="14" BorderThickness="1" BorderBrush="#DDDDDD">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Padding="5"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- MIDDLE PANEL - Details and Actions -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Animal Details -->
+                <Border Grid.Row="0" Background="White" CornerRadius="8" Padding="15" 
+                       BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Source={x:Static res:Localization.Instance}, Path=[DetailsSection]}" 
+                                  FontSize="18" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,10"/>
+
+                        <TextBlock x:Name="DetailsTextBlock" 
+                                  Text="{Binding Source={x:Static res:Localization.Instance}, Path=[SelectAnimal]}"
+                                  FontSize="14" TextWrapping="Wrap" Foreground="#666666"/>
                     </StackPanel>
-                </Grid>
-            </Border>
+                </Border>
 
-            <!-- НОВОЕ: Вольеры -->
-            <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="10" 
-                    BorderBrush="#CCCCCC" BorderThickness="1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                <!-- Actions Panel -->
+                <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="15" 
+                       BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="🏠 Voljeerid" FontSize="18" 
-                              FontWeight="Bold" Margin="0,0,0,10" Foreground="#333333"/>
+                        <TextBlock Grid.Row="0" 
+                                  Text="{Binding Source={x:Static res:Localization.Instance}, Path=[ActionsSection]}" 
+                                  FontSize="18" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,10"/>
 
-                    <ListBox Grid.Row="1" x:Name="EnclosuresListBox"
-                            FontSize="14" BorderThickness="1" BorderBrush="#DDDDDD">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}" Padding="5"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </Grid>
-            </Border>
-        </Grid>
+                        <!-- Action Buttons -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[MakeSound]}" 
+                                   Click="MakeSound_Click" 
+                                   Width="120" Height="35" Margin="0,0,10,0"
+                                   Background="#2196F3" Foreground="White" 
+                                   FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
 
-        <!-- KESKMINE PANEEL - Detailid ja tegevused -->
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[CrazyAction]}" 
+                                   Click="CrazyAction_Click" 
+                                   Width="140" Height="35" Margin="0,0,10,0"
+                                   Background="#FF9800" Foreground="White" 
+                                   FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
 
-            <!-- Looma detailid -->
-            <Border Grid.Row="0" Background="White" CornerRadius="8" Padding="15" 
-                   BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,10">
-                <StackPanel>
-                    <TextBlock Text="📝 Looma Detailid" FontSize="18" FontWeight="Bold" 
-                              Foreground="#333333" Margin="0,0,0,10"/>
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[Fly]}" 
+                                   Click="Fly_Click" 
+                                   Width="100" Height="35"
+                                   Background="#9C27B0" Foreground="White" 
+                                   FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        </StackPanel>
 
-                    <TextBlock x:Name="DetailsTextBlock" Text="Vali loom vasakult..."
-                              FontSize="14" TextWrapping="Wrap" Foreground="#666666"/>
-                </StackPanel>
-            </Border>
+                        <!-- Feeding Row -->
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="{Binding Source={x:Static res:Localization.Instance}, Path=[FoodLabel]}" 
+                                      VerticalAlignment="Center" 
+                                      FontSize="14" Margin="0,0,10,0" FontWeight="Bold"/>
+                            <TextBox x:Name="FoodTextBox" Width="150" Height="30" 
+                                    VerticalContentAlignment="Center" Padding="5"/>
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[Feed]}" 
+                                   Click="Feed_Click" 
+                                   Width="100" Height="30" Margin="10,0,0,0"
+                                   Background="#8BC34A" Foreground="White" 
+                                   FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        </StackPanel>
 
-            <!-- Tegevuste paneel -->
-            <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="15" 
-                   BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,0,10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                        <!-- Enclosure + Timer Row -->
+                        <WrapPanel Grid.Row="3" Orientation="Horizontal">
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[DropFood]}" 
+                                   Click="DropFood_Click"
+                                   Width="200" Height="35" Margin="0,0,10,0"
+                                   Background="#FF5722" Foreground="White" 
+                                   FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
 
-                    <TextBlock Grid.Row="0" Text="🎮 Tegevused" FontSize="18" 
-                              FontWeight="Bold" Foreground="#333333" Margin="0,0,0,10"/>
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[StartTimer]}" 
+                                   Click="StartTimer_Click"
+                                   Width="130" Height="35" Margin="0,0,5,0"
+                                   Background="#673AB7" Foreground="White" 
+                                   FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
 
-                    <!-- Nupud -->
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
-                        <Button Content="🔊 Tee hääl" Click="MakeSound_Click" 
-                               Width="120" Height="35" Margin="0,0,10,0"
-                               Background="#2196F3" Foreground="White" 
-                               FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                            <Button Content="{Binding Source={x:Static res:Localization.Instance}, Path=[StopTimer]}" 
+                                   Click="StopTimer_Click"
+                                   Width="70" Height="35"
+                                   Background="#607D8B" Foreground="White" 
+                                   FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        </WrapPanel>
+                    </Grid>
+                </Border>
 
-                        <Button Content="🎪 Crazy Action!" Click="CrazyAction_Click" 
-                               Width="140" Height="35" Margin="0,0,10,0"
-                               Background="#FF9800" Foreground="White" 
-                               FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                <!-- Log -->
+                <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="15" 
+                       BorderBrush="#CCCCCC" BorderThickness="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                        <Button Content="✈️ Lenda" Click="Fly_Click" 
-                               Width="100" Height="35"
-                               Background="#9C27B0" Foreground="White" 
-                               FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                    </StackPanel>
+                        <TextBlock Grid.Row="0" 
+                                  Text="{Binding Source={x:Static res:Localization.Instance}, Path=[LogSection]}" 
+                                  FontSize="18" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,10"/>
 
-                    <!-- Toitmise rida -->
-                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Text="Toit:" VerticalAlignment="Center" 
-                                  FontSize="14" Margin="0,0,10,0" FontWeight="Bold"/>
-                        <TextBox x:Name="FoodTextBox" Width="150" Height="30" 
-                                VerticalContentAlignment="Center" Padding="5"/>
-                        <Button Content="🍖 Toida" Click="Feed_Click" 
-                               Width="100" Height="30" Margin="10,0,0,0"
-                               Background="#8BC34A" Foreground="White" 
-                               FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                    </StackPanel>
+                        <ListBox Grid.Row="1" x:Name="LogListBox" 
+                                Background="#FAFAFA" BorderThickness="1" 
+                                BorderBrush="#DDDDDD" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="Wrap" 
+                                              Padding="5" FontSize="12"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <!-- НОВОЕ: Вольер + таймер -->
-                    <WrapPanel Grid.Row="3" Orientation="Horizontal">
-                        <Button Content="🍖 Viska toit voljeeri" Click="DropFood_Click"
-                               Width="180" Height="35" Margin="0,0,10,0"
-                               Background="#FF5722" Foreground="White" 
-                               FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-
-                        <Button Content="🌙 Start Timer" Click="StartTimer_Click"
-                               Width="110" Height="35" Margin="0,0,5,0"
-                               Background="#673AB7" Foreground="White" 
-                               FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-
-                        <Button Content="⏹️ Stop" Click="StopTimer_Click"
-                               Width="70" Height="35"
+                        <Button Grid.Row="2" 
+                               Content="{Binding Source={x:Static res:Localization.Instance}, Path=[ClearLog]}" 
+                               Click="ClearLog_Click" Height="30" Margin="0,10,0,0"
                                Background="#607D8B" Foreground="White" 
                                FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                    </WrapPanel>
-                </Grid>
-            </Border>
+                    </Grid>
+                </Border>
+            </Grid>
 
-            <!-- Logi -->
-            <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="15" 
+            <!-- RIGHT PANEL - LINQ Statistics -->
+            <Border Grid.Column="2" Background="White" CornerRadius="8" Padding="15" 
                    BorderBrush="#CCCCCC" BorderThickness="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -173,58 +268,30 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="📋 Logi" FontSize="18" 
-                              FontWeight="Bold" Foreground="#333333" Margin="0,0,0,10"/>
+                    <TextBlock Grid.Row="0" 
+                              Text="{Binding Source={x:Static res:Localization.Instance}, Path=[StatisticsSection]}" 
+                              FontSize="18" FontWeight="Bold" Foreground="#333333" Margin="0,0,0,10"/>
 
-                    <ListBox Grid.Row="1" x:Name="LogListBox" 
-                            Background="#FAFAFA" BorderThickness="1" 
-                            BorderBrush="#DDDDDD" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}" TextWrapping="Wrap" 
-                                          Padding="5" FontSize="12"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ListBox x:Name="StatisticsListBox" BorderThickness="0"
+                                Background="Transparent" FontFamily="Consolas" FontSize="12">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="Wrap" Padding="2"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
 
-                    <Button Grid.Row="2" Content="🗑️ Tühjenda logi" 
-                           Click="ClearLog_Click" Height="30" Margin="0,10,0,0"
-                           Background="#607D8B" Foreground="White" 
+                    <Button Grid.Row="2" 
+                           Content="{Binding Source={x:Static res:Localization.Instance}, Path=[UpdateStats]}" 
+                           Click="UpdateStatistics_Click"
+                           Height="35" Margin="0,10,0,0"
+                           Background="#00BCD4" Foreground="White" 
                            FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
                 </Grid>
             </Border>
         </Grid>
-
-        <!-- PAREM PANEEL - НОВОЕ: LINQ Statistika -->
-        <Border Grid.Column="2" Background="White" CornerRadius="8" Padding="15" 
-               BorderBrush="#CCCCCC" BorderThickness="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Text="📊 Statistika (LINQ)" FontSize="18" 
-                          FontWeight="Bold" Foreground="#333333" Margin="0,0,0,10"/>
-
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                    <ListBox x:Name="StatisticsListBox" BorderThickness="0"
-                            Background="Transparent" FontFamily="Consolas" FontSize="12">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}" TextWrapping="Wrap" Padding="2"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </ScrollViewer>
-
-                <Button Grid.Row="2" Content="🔄 Uuenda statistikat" 
-                       Click="UpdateStatistics_Click"
-                       Height="35" Margin="0,10,0,0"
-                       Background="#00BCD4" Foreground="White" 
-                       FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-            </Grid>
-        </Border>
     </Grid>
 </Window>
+
