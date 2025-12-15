@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\animalmanager.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:animalmanager.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
@@ -35,6 +43,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAADABAAAAAAAAAAAmwFoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-12-15T10:55:02.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "gitignore",
+              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\gitignore",
+              "RelativeDocumentMoniker": "gitignore",
+              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\gitignore",
+              "RelativeToolTip": "gitignore",
+              "ViewState": "AgIAAEcBAAAAAAAAAAAAAFoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-12-15T10:54:07.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AnimalManager",
               "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\AnimalManager.csproj",
               "RelativeDocumentMoniker": "AnimalManager.csproj",
@@ -46,19 +88,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml",
               "RelativeToolTip": "Views\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-12T11:28:20.904Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-12T11:28:20.904Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Localization.cs",
               "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Resources\\Localization.cs",
               "RelativeDocumentMoniker": "Resources\\Localization.cs",
@@ -66,16 +107,7 @@
               "RelativeToolTip": "Resources\\Localization.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T11:28:14.709Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2025-12-12T11:28:14.709Z"
             }
           ]
         }

@@ -3,40 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\resources\\localization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:resources\\localization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\animalmanager.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:animalmanager.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\views\\addanimaldialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:views\\addanimaldialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\enclosure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:enclosure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\models\\animal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:models\\animal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\services\\zooeventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:services\\zooeventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\data\\localdbanimalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:data\\localdbanimalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\views\\addanimaldialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:views\\addanimaldialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|c:\\users\\molot\\favorites\\desktop\\czoo\\czoo\\crazy zoo\\crazy zoo\\animalmanager\\resources\\localization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5054817C-6D9E-4C74-98B6-7FDE9FA0E806}|AnimalManager.csproj|solutionrelative:resources\\localization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,12 +33,16 @@
               "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AnimalManager",
+              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\AnimalManager.csproj",
+              "RelativeDocumentMoniker": "AnimalManager.csproj",
+              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\AnimalManager.csproj",
+              "RelativeToolTip": "AnimalManager.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-12T11:29:10.04Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -73,103 +53,29 @@
               "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\MainWindow.xaml",
               "RelativeToolTip": "Views\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-12T11:13:52.157Z"
+              "WhenOpened": "2025-12-12T11:28:20.904Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AddAnimalDialog.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\AddAnimalDialog.xaml.cs",
-              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml.cs",
-              "RelativeToolTip": "Views\\AddAnimalDialog.xaml.cs",
-              "ViewState": "AgIAAJsAAAAAAAAAAAAQwKIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T02:01:37.57Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Localization.cs",
               "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Resources\\Localization.cs",
               "RelativeDocumentMoniker": "Resources\\Localization.cs",
               "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Resources\\Localization.cs",
               "RelativeToolTip": "Resources\\Localization.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAABJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T01:52:31.339Z",
+              "WhenOpened": "2025-12-12T11:28:14.709Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LocalDbAnimalRepository.cs",
-              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Data\\LocalDbAnimalRepository.cs",
-              "RelativeDocumentMoniker": "Data\\LocalDbAnimalRepository.cs",
-              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Data\\LocalDbAnimalRepository.cs",
-              "RelativeToolTip": "Data\\LocalDbAnimalRepository.cs",
-              "ViewState": "AgIAACACAAAAAAAAAADwv04CAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T01:37:23.205Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ZooEventManager.cs",
-              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Services\\ZooEventManager.cs",
-              "RelativeDocumentMoniker": "Services\\ZooEventManager.cs",
-              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Services\\ZooEventManager.cs",
-              "RelativeToolTip": "Services\\ZooEventManager.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAIwH0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T23:38:50.204Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Animal.cs",
-              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Models\\Animal.cs",
-              "RelativeDocumentMoniker": "Models\\Animal.cs",
-              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Models\\Animal.cs",
-              "RelativeToolTip": "Models\\Animal.cs",
-              "ViewState": "AgIAAOYAAAAAAAAAAADwvxQBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T23:29:41.419Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Repositories\\IRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\IRepository.cs",
-              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Repositories\\IRepository.cs",
-              "RelativeToolTip": "Repositories\\IRepository.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAUwDoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T23:35:27.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Enclosure.cs",
-              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Enclosure.cs",
-              "RelativeDocumentMoniker": "Enclosure.cs",
-              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Enclosure.cs",
-              "RelativeToolTip": "Enclosure.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T23:37:01.045Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AddAnimalDialog.xaml",
-              "DocumentMoniker": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml",
-              "RelativeDocumentMoniker": "Views\\AddAnimalDialog.xaml",
-              "ToolTip": "C:\\Users\\molot\\Favorites\\Desktop\\czoo\\czoo\\Crazy Zoo\\Crazy Zoo\\AnimalManager\\Views\\AddAnimalDialog.xaml",
-              "RelativeToolTip": "Views\\AddAnimalDialog.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-23T23:29:37.467Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
